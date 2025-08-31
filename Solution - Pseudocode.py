@@ -33,11 +33,11 @@ async def main():
 
         # 2. Authentication (if needed)
         if not session_available:
-            await page.goto("YOUR_LOGIN_URL_HERE")
+            await page.goto("https://hiring.idenhq.com/")
 
-            await page.locator("#username_field_id").fill("YOUR_USERNAME")
-            await page.locator("#password_field_id").fill("YOUR_PASSWORD")
-            await page.locator("#login_button_id").click()
+            await page.locator('input[type="email"]').fill("YOUR_EMAIL")
+            await page.locator('input[type="password"]').fill("YOUR_PASSWORD")
+            await page.locator("text=Sign in").click()
 
             # Confirm login success by waiting for a known dashboard element
             await page.locator("#dashboard_element_id").wait_for()
@@ -49,7 +49,9 @@ async def main():
         # 3. Navigation to Product Table
         await page.locator("text=Open Dashboard Menu").click()
         await page.locator("text=Data Tools").click()
+        await page.locator("text=Data Tools").click()
         await page.locator("text=Inventory Options").click()
+        await page.locator("text=Open Products Drawer").click()
         await page.locator("text=Open Products Drawer").click()
 
         # Ensure the table is fully loaded
